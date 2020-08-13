@@ -1,0 +1,8 @@
+// 라우터별 파일 루트 정의
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/[...name]": "pages/[...name].js",
+  "/signin": "pages/signin.js"
+}
