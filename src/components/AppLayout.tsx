@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react'
 import {Layout, Menu, Breadcrumb} from 'antd';
-import {UserOutlined, LaptopOutlined, NotificationOutlined} from '@ant-design/icons';
+import {UserOutlined, NotificationOutlined} from '@ant-design/icons';
 import Link from 'next/link';
 
 const {SubMenu} = Menu;
@@ -15,13 +15,13 @@ const AppLayout = ({children, title = 'This is the default title'}: Props) => {
         <Layout>
             <Header className="header">
                 <div className="logo" style={{color: 'white'}}>
-                    {title}
+                    <Link href="/" >{title}</Link>
                 </div>
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-                    <Menu.Item key="1">nav 1</Menu.Item>
-                    <Menu.Item key="2">nav 2</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
-                </Menu>
+                {/*<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>*/}
+                {/*    <Menu.Item key="1">nav 1</Menu.Item>*/}
+                {/*    <Menu.Item key="2">nav 2</Menu.Item>*/}
+                {/*    <Menu.Item key="3">nav 3</Menu.Item>*/}
+                {/*</Menu>*/}
             </Header>
             <Layout>
                 <Sider width={200} className="site-layout-background">

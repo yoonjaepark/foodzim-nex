@@ -1,9 +1,9 @@
 import {GetStaticProps} from 'next'
 import {Button, Input} from "antd";
-import {useCallback, useState} from "react";
+import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {User} from "../../../../interfaces";
-import {add} from "../../../modules/user";
+import {addAsync} from "../../../modules/user";
 
 const WithStaticProps = () => {
     const [phone, setPhone] = useState('');
@@ -16,10 +16,7 @@ const WithStaticProps = () => {
             name: name.toString(),
             phone: phone.toString()
         }
-
-        // console.log(user)
-        // useCallback은 최적화를 위한 hook이다 이 앱에선 굳이 사용 안 해도 되는데 습관이 들면 좋기에 사용.
-        dispatch(add(user));
+        dispatch(addAsync(user));
     };
     return (
         <div>

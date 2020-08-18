@@ -4,7 +4,7 @@ const {TabPane} = Tabs;
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../_app";
-import {increase, decrease} from "../../modules/counter";
+import {increaseAsync, decreaseAsync} from "../../modules/counter";
 
 function callback(key: String) {
     console.log(key);
@@ -15,11 +15,11 @@ const Home = () => {
     const count = useSelector((state: RootState) => state.counter); // store의 state를 불러오는 hook   store의 state 중에서 count의 state를 불러온다.
     const [text, setText] = useState('init');
     const onClickPlus = () => {
-        dispatch(increase());
+        dispatch(increaseAsync());
     }
 
     const onClickMinus = () => {
-        dispatch(decrease());
+        dispatch(decreaseAsync());
     }
 
 
