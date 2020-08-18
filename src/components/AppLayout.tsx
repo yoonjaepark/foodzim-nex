@@ -35,12 +35,16 @@ const AppLayout = ({children, title = 'This is the default title'}: Props) => {
                             <Menu.Item key="1">상품 리스트</Menu.Item>
                             <Menu.Item key="2">상품 등록</Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" icon={<LaptopOutlined/>} title="사용자">
+                        <SubMenu key="sub2" icon={<UserOutlined/>} title="사용자">
                             <Menu.Item key="5">
-                                <Link href="/users/list" className="nav-text">사용자 리스트</Link>
+                                <Link href="/users/list" >
+                                    <span className="nav-text">사용자 리스트</span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="6">
-                                <Link href="/users/add" className="nav-text">사용자 추가</Link>
+                                <Link href="/users/add" >
+                                    <span className="nav-text">사용자 추가</span>
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="7">option7</Menu.Item>
                             <Menu.Item key="8">option8</Menu.Item>
