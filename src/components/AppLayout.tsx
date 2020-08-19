@@ -15,7 +15,7 @@ const AppLayout = ({children, title = 'This is the default title'}: Props) => {
         <Layout>
             <Header className="header">
                 <div className="logo" style={{color: 'white'}}>
-                    <Link href="/" >{title}</Link>
+                    <Link href="/">{title}</Link>
                 </div>
                 {/*<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>*/}
                 {/*    <Menu.Item key="1">nav 1</Menu.Item>*/}
@@ -37,20 +37,24 @@ const AppLayout = ({children, title = 'This is the default title'}: Props) => {
                         </SubMenu>
                         <SubMenu key="sub2" icon={<UserOutlined/>} title="사용자">
                             <Menu.Item key="5">
-                                <Link href="/users/list" >
+                                <Link href="/users/list">
                                     <span className="nav-text">사용자 리스트</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="6">
-                                <Link href="/users/add" >
+                                <Link href="/users/add">
                                     <span className="nav-text">사용자 추가</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="7">option7</Menu.Item>
                             <Menu.Item key="8">option8</Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub3" icon={<NotificationOutlined/>} title="subnav 3">
-                            <Menu.Item key="9">option9</Menu.Item>
+                        <SubMenu key="sub3" icon={<NotificationOutlined/>} title="Todo">
+                            <Menu.Item key="9">
+                                <Link href="/todo/list">
+                                    <span className="nav-text">리스트</span>
+                                </Link>
+                            </Menu.Item>
                             <Menu.Item key="10">option10</Menu.Item>
                             <Menu.Item key="11">option11</Menu.Item>
                             <Menu.Item key="12">option12</Menu.Item>

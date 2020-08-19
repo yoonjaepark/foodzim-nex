@@ -8,8 +8,10 @@ const isProd = process.env.NODE_ENV === "production";
 if (typeof require !== "undefined") {
     require.extensions[".less"] = (file) => {};
 }
+const env = require(`./next-env.${process.env.NODE_ENV}`);
 
 module.exports = withCSS({
+    env,
     cssModules: true,
     cssLoaderOptions: {
         importLoaders: 1,

@@ -13,7 +13,7 @@
 /tmp
 /.next
 /.coverage
-/.env
+/next-env.development.js
 .DS_Store
 .eslintcache
 

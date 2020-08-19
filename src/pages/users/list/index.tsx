@@ -2,6 +2,7 @@ import {GetStaticProps} from 'next'
 import {useSelector} from "react-redux";
 import {RootState} from "../../_app";
 import {useState} from "react";
+import {Button} from "antd";
 
 const WithStaticProps = () => {
     const user = useSelector((state: RootState) => state.user); // store의 state를 불러오는 hook   store의 state 중에서 count의 state를 불러온다.
@@ -14,7 +15,7 @@ const WithStaticProps = () => {
     }
     return (
         <div>
-            <button onClick={handleAddList}>리스트 추가</button>
+            <Button onClick={handleAddList}>리스트 추가</Button>
             <hr/>
             {list.map((item, i) => (
                 <div key={i}>{item}</div>
