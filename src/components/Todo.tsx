@@ -8,7 +8,7 @@ function Todo(props: any) {
     const {todo} = props;
     const updateTodo = () => {
         todosRef.doc(todo.id).set({...todo,done:!todo.done}).then(() => {
-            alert('업데이트 되었습니다.');
+            console.log('업데이트 되었습니다.');
         })
     }
     return (

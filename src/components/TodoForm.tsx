@@ -18,10 +18,11 @@ function TodoForm() {
         <form style={{display: "flex", marginBottom: "20px"}}>
             <TextArea
                 id="outlined-basic"
+                style={{minHeight: '80px'}}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             />
-            <Button onClick={createTodo}>
+            <Button style={{ marginLeft: '20px', minHeight: '80px' }} type="primary" onClick={createTodo}>
                 추가
             </Button>
             {/*label="Add Todo"*/}

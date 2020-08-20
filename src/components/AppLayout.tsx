@@ -1,84 +1,149 @@
 import React, {ReactNode} from 'react'
-import {Layout, Menu, Breadcrumb} from 'antd';
-import {UserOutlined, NotificationOutlined} from '@ant-design/icons';
-import Link from 'next/link';
+import {Layout, Button, Select} from 'antd';
+import {AppFooter} from "./AppFooter";
 
-const {SubMenu} = Menu;
-const {Header, Content, Sider} = Layout;
+const {Option} = Select;
+const {Header, Content} = Layout;
+import {useRouter} from 'next/router'
+import {useSelector} from "react-redux";
+import {RootState} from "../pages/_app";
+
 type Props = {
     children?: ReactNode
     title?: string
 }
 
-const AppLayout = ({children, title = 'This is the default title'}: Props) => {
+const AppLayout = ({children, title = 'Netflix'}: Props) => {
+    const router = useRouter();
+
+    const handleLogin = (e: MouseEvent) => {
+        e.preventDefault();
+        router.push('/login');
+    }
+
+    const handleHome = (e: MouseEvent) => {
+        e.preventDefault();
+        router.push('/');
+    }
+    const auth = useSelector((state: RootState) => state.auth); // store의 state를 불러오는 hook   store의 state 중에서 count의 state를 불러온다.
+    console.log('auth',auth)
     return (
         <Layout>
-            <Header className="header">
-                <div className="logo" style={{color: 'white'}}>
-                    <Link href="/">{title}</Link>
-                </div>
-                {/*<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>*/}
-                {/*    <Menu.Item key="1">nav 1</Menu.Item>*/}
-                {/*    <Menu.Item key="2">nav 2</Menu.Item>*/}
-                {/*    <Menu.Item key="3">nav 3</Menu.Item>*/}
-                {/*</Menu>*/}
-            </Header>
             <Layout>
-                <Sider width={200} className="site-layout-background">
-                    <Menu
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
-                        style={{height: '100%', borderRight: 0}}
-                    >
-                        <SubMenu key="sub1" icon={<UserOutlined/>} title="상품">
-                            <Menu.Item key="1">상품 리스트</Menu.Item>
-                            <Menu.Item key="2">상품 등록</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub2" icon={<UserOutlined/>} title="사용자">
-                            <Menu.Item key="5">
-                                <Link href="/users/list">
-                                    <span className="nav-text">사용자 리스트</span>
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="6">
-                                <Link href="/users/add">
-                                    <span className="nav-text">사용자 추가</span>
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="7">option7</Menu.Item>
-                            <Menu.Item key="8">option8</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub3" icon={<NotificationOutlined/>} title="Todo">
-                            <Menu.Item key="9">
-                                <Link href="/todo/list">
-                                    <span className="nav-text">리스트</span>
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="10">option10</Menu.Item>
-                            <Menu.Item key="11">option11</Menu.Item>
-                            <Menu.Item key="12">option12</Menu.Item>
-                        </SubMenu>
-                    </Menu>
-                </Sider>
-                <Layout style={{padding: '0 24px 24px'}}>
-                    <Breadcrumb style={{margin: '16px 0'}}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <Content
-                        className="site-layout-background"
-                        style={{
-                            padding: 24,
-                            margin: 0,
-                            minHeight: 280,
-                        }}
-                    >
+                <Header className="our-story-header-wrapper">
+                    <div className="our-story-header" data-uia-our-story="our-story-header">
+                        <span
+                            className="svg-nfLogo our-story-logo nfLogo" data-uia="netflix-header-svg-logo-noclick">
+                            <svg onClick={() => handleHome} viewBox="0 0 111 30"
+                                 className="svg-icon svg-icon-netflix-logo" focusable="false">
+                                <g id="netflix-logo">
+                                    <path
+                                        d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"
+                                        id="Fill-14"/>
+                                </g>
+                            </svg>
+                            <span className="screen-reader-text">{title}</span>
+                        </span>
+                        <div className="lang-selection-container" id="lang-switcher">
+                            <Select defaultValue="ko">
+                                <Option value="ko">한국어</Option>
+                            </Select>
+                        </div>
+                        <div>
+                            <Button onClick={() => handleLogin}>로그인 {auth.auth.name}
+                            </Button>
+                        </div>
+                    </div>
+                </Header>
+                <Content style={{margin: '24px 16px 0'}}>
+                    <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                         {children}
-                    </Content>
-                </Layout>
+                    </div>
+                </Content>
+                <AppFooter/>
             </Layout>
+            <style jsx>
+                {`
+               
+                    .our-story-header {
+                        position: relative;
+                        margin: 0 3.5rem;
+                        height: 100%;
+                    }
+                    .our-story-header {
+                        display: flex;
+                        -webkit-box-orient: horizontal;
+                        -webkit-box-direction: normal;
+                        -webkit-flex-flow: row nowrap;
+                        -moz-box-orient: horizontal;
+                        -moz-box-direction: normal;
+                        -ms-flex-flow: row nowrap;
+                        flex-flow: row nowrap;
+                        -webkit-box-pack: start;
+                        -webkit-justify-content: flex-start;
+                        -moz-box-pack: start;
+                        -ms-flex-pack: start;
+                        justify-content: flex-start;
+                        -webkit-box-align: start;
+                        -webkit-align-items: flex-start;
+                        -moz-box-align: start;
+                        -ms-flex-align: start;
+                        align-items: flex-start;
+                        padding-top: .5rem;
+                        height: auto;
+                    }
+                    .our-story-header-wrapper .our-story-header {
+                            display: -webkit-box;
+                            display: -webkit-flex;
+                            display: -moz-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            -webkit-box-orient: horizontal;
+                            -webkit-box-direction: normal;
+                            -webkit-flex-flow: row nowrap;
+                            -moz-box-orient: horizontal;
+                            -moz-box-direction: normal;
+                            -ms-flex-flow: row nowrap;
+                            flex-flow: row nowrap;
+                            -webkit-box-pack: start;
+                            -webkit-justify-content: flex-start;
+                            -moz-box-pack: start;
+                            -ms-flex-pack: start;
+                            justify-content: flex-start;
+                            -webkit-box-align: start;
+                            -webkit-align-items: flex-start;
+                            -moz-box-align: start;
+                            -ms-flex-align: start;
+                            align-items: flex-start;
+                            padding-top: .5rem;
+                            height: auto;
+                    }
+                    .nfLogo .svg-icon-netflix-logo {
+                        padding-top: .5rem;
+                        height: 45px;
+                        width: 167px;
+                    }
+                    .nfLogo {
+                        fill: #e50914;
+                        line-height: normal;
+                    }
+                    .our-story-header .lang-selection-container {
+                        display: inline-block;
+                        margin: 0 .75rem;
+                    }
+                    .our-story-header .our-story-logo {
+                        margin-right: auto;
+                    }                    
+                    .site-layout-background {
+                      background: #fff;
+                    }
+                    .screen-reader-text {
+                        position: absolute;
+                        top: -9999px;
+                        left: -9999px;
+                    }
+                `}
+            </style>
         </Layout>
     )
 }

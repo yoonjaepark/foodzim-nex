@@ -9,3 +9,12 @@ export type User = {
   name: string
   phone: string
 }
+
+export type Auth = {
+  accessToken: string
+  signInMethod: string
+  email: string
+  name: string
+  id: string
+  locale: string
+}

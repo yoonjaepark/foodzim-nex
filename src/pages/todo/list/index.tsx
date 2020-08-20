@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {todosRef} from "../../../apis";
 import Todo from "../../../components/Todo";
 import TodoForm from "../../../components/TodoForm";
+import {Divider} from "antd";
 
 function TodoList() {
     const [todos, setTodos] = useState<any>([]);
@@ -23,11 +24,12 @@ function TodoList() {
     return (
         <>
             <div>
-                <TodoForm />
+                <TodoForm/>
             </div>
             {todos.map((todo: any, i: number) => (
                 <React.Fragment key={todo.id}>
                     <Todo todo={todo}/>
+                    <Divider />
                     {i < todos.length - 1}
                 </React.Fragment>
             ))}

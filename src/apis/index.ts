@@ -1,5 +1,6 @@
-import firebase from 'firebase/app'
-import "firebase/firestore"
+import * as firebase from 'firebase'
+
+
 console.log(process.env)
 
 const config = {
@@ -20,8 +21,15 @@ try {
     }
 }
 
-const firestore = firebase.firestore();
 
+const firestore = firebase.firestore();
+const fireAuth = firebase.auth();
 const databaseRef = firestore;
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({prompt: 'select_account'});
+const signInWithGoogle = () => fireAuth.signInWithPopup(provider)
+
+
 const todosRef = databaseRef.collection("todo")
-export { firebase, firestore, todosRef };
+export {firebase, fireAuth, firestore, signInWithGoogle, todosRef};
