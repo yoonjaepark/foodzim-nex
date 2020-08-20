@@ -9,7 +9,8 @@ import AppLayout from "../components/AppLayout";
 import '../assets/less/_app.less';
 import {AppPropsType} from "next/dist/next-server/lib/utils";
 
-const MyApp = ({Component, pageProps}: AppPropsType) => {
+const MyApp = ({Component, pageProps, router}: AppPropsType) => {
+    console.log('pageProps', router)
     return (
         <AppLayout>
             <Component {...pageProps} />

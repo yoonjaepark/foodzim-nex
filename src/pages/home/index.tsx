@@ -10,13 +10,15 @@ const Home = () => {
                 <h2>
                     다양한 디바이스에서 시청하세요. 언제든 해지하실수 있습니다.
                 </h2>
-                <div>
-                    <Input placeholder="Basic usage" />
-                </div>
-                <div>
-                    <Button>
-                        30일 무료 이용
-                    </Button>
+                <div style={{display: 'flex'}}>
+                    <div style={{flex: 1}}>
+                        <Input placeholder="Email" />
+                    </div>
+                    <div>
+                        <Button>
+                            30일 무료 이용
+                        </Button>
+                    </div>
                 </div>
             </div>
             <style jsx>

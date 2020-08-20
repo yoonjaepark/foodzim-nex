@@ -7,6 +7,7 @@ const {Header, Content} = Layout;
 import {useRouter} from 'next/router'
 import {useSelector} from "react-redux";
 import {RootState} from "../pages/_app";
+import { MouseEvent } from 'react';
 
 type Props = {
     children?: ReactNode
@@ -34,7 +35,8 @@ const AppLayout = ({children, title = 'Netflix'}: Props) => {
                     <div className="our-story-header" data-uia-our-story="our-story-header">
                         <span
                             className="svg-nfLogo our-story-logo nfLogo" data-uia="netflix-header-svg-logo-noclick">
-                            <svg onClick={() => handleHome} viewBox="0 0 111 30"
+                            <svg viewBox="0 0 111 30"
+                                 onClick={handleHome}
                                  className="svg-icon svg-icon-netflix-logo" focusable="false">
                                 <g id="netflix-logo">
                                     <path
@@ -50,7 +52,8 @@ const AppLayout = ({children, title = 'Netflix'}: Props) => {
                             </Select>
                         </div>
                         <div>
-                            <Button onClick={() => handleLogin}>로그인 {auth.auth.name}
+                            <Button onClick={handleLogin}>
+                                로그인 {auth.auth.name}
                             </Button>
                         </div>
                     </div>
